@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+        android:background="@color/green_008577"
+        android:paddingEnd="72dp"
+        app:theme="@style/ToolbarColoredBackArrow">
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/white_ffffff"
+            android:textSize="20dp"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.zhouwei.mzbanner.MZBannerView
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:open_mz_mode="true"
+        app:canLoop="true"
+        app:middle_page_cover="true"
+        app:indicatorAlign="center"
+        android:layout_marginTop="10dp"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+            <TextView
+                android:id="@+id/tv_name_ch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_FF7744"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_name_en"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_name_latin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_behavior"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_444444"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/tv_diet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_444444"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/tv_feature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_444444"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/tv_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_888888"
+                android:textSize="14dp"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</LinearLayout>
