@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,9 +28,9 @@ import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 
 
 public class PlantFragment extends BaseFragment<PlantContract.IView, PlantPresenter> implements PlantContract.IView {
-    RelativeLayout parent;
-    RecyclerView rv_list;
-    String queryName;
+    private RelativeLayout parent;
+    private RecyclerView rv_list;
+    private String queryName;
 
     public static PlantFragment newInstance(String query){
         PlantFragment f = new PlantFragment();

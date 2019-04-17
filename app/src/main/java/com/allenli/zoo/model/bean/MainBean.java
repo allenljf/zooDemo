@@ -63,7 +63,7 @@ public class MainBean {
             this.results = results;
         }
 
-        public static class ResultsBean implements Serializable{
+        public static class ResultsBean implements Serializable {
 
             private String E_Pic_URL;
             private String E_Geo;

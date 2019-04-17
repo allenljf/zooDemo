@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,9 +30,9 @@ import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 
 
 public class AnimalFragment extends BaseFragment<AnimalContract.IView, AnimalPresenter> implements AnimalContract.IView {
-    RelativeLayout parent;
-    RecyclerView rv_list;
-    String queryName;
+    private RelativeLayout parent;
+    private RecyclerView rv_list;
+    private String queryName;
 
     public static AnimalFragment newInstance(String query) {
         AnimalFragment f = new AnimalFragment();
@@ -77,7 +76,7 @@ public class AnimalFragment extends BaseFragment<AnimalContract.IView, AnimalPre
     public void onDataSuccess(AnimalBean data) {
         finishData();
 
-        if(data.getResult().getCount() == 0){
+        if (data.getResult().getCount() == 0) {
             view.findViewById(R.id.tv_no_data).setVisibility(View.VISIBLE);
             return;
         }

@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers;
 public class MainModel implements MainContract.IModel {
     private CompositeDisposable disposables = new CompositeDisposable();
 
-    public void getData(final MainContract.ICallBack callBack){
+    public void getData(final MainContract.ICallBack callBack) {
         disposables.add(RetrofitClient.apiService.getMain()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -34,7 +34,7 @@ public class MainModel implements MainContract.IModel {
                 }));
     }
 
-    public void destroy(){
+    public void destroy() {
         disposables.clear();
     }
 }

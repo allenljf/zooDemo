@@ -1,9 +1,7 @@
 package com.allenli.zoo.model.repo;
 
 import com.allenli.zoo.api.RetrofitClient;
-import com.allenli.zoo.contract.AnimalContract;
 import com.allenli.zoo.contract.PlantContract;
-import com.allenli.zoo.model.bean.AnimalBean;
 import com.allenli.zoo.model.bean.PlantBean;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

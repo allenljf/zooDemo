@@ -28,8 +28,8 @@ import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
 
 
 public class MainActivity extends BaseActivity<MainContract.IView, MainPresenter> implements MainContract.IView {
-    RecyclerView rv_main_list;
-    LinearLayout parent;
+    private RecyclerView rv_main_list;
+    private LinearLayout parent;
 
     @Override
     protected int getLayoutId() {

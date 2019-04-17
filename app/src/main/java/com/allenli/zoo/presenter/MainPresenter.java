@@ -12,11 +12,13 @@ public class MainPresenter extends BasePresenter<MainContract.IView> implements 
         model = new MainModel();
     }
 
-    public void getData(){
-        model.getData(new MainContract.ICallBack(){
+    public void getData() {
+        model.getData(new MainContract.ICallBack() {
             @Override
             public void onSuccess(MainBean data) {
-                getView().onDataSuccess(data);
+                if (isViewAttached()) {
+                    getView().onDataSuccess(data);
+                }
             }
 
             @Override
@@ -24,5 +26,11 @@ public class MainPresenter extends BasePresenter<MainContract.IView> implements 
                 getView().onDataFail(errorMessage);
             }
         });
+    }
+
+    @Override
+    public void detachView() {
+        super.detachView();
+        model.destroy();
     }
 }

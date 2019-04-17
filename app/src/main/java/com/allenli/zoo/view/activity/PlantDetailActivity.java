@@ -2,7 +2,6 @@ package com.allenli.zoo.view.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import com.allenli.zoo.Constant;
 import com.allenli.zoo.R;
-import com.allenli.zoo.model.bean.AnimalBean;
 import com.allenli.zoo.model.bean.PlantBean;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
@@ -30,11 +28,11 @@ import androidx.appcompat.widget.Toolbar;
 
 
 public class PlantDetailActivity extends AppCompatActivity {
-    PlantBean.ResultBean.ResultsBean mData;
-    List<String> picList = new ArrayList();
-    List<Integer> picNumList = new ArrayList();
-    MZBannerView banner;
-    TextView tv_name, tv_name_ch, tv_name_en, tv_name_latin, tv_alsoknow, tv_brief, tv_feature, tv_function, tv_update;
+    private PlantBean.ResultBean.ResultsBean mData;
+    private List<String> picList = new ArrayList();
+    private List<Integer> picNumList = new ArrayList();
+    private MZBannerView banner;
+    private TextView tv_name, tv_name_ch, tv_name_en, tv_name_latin, tv_alsoknow, tv_brief, tv_feature, tv_function, tv_update;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,7 +42,6 @@ public class PlantDetailActivity extends AppCompatActivity {
         initView();
         initBanner();
     }
-
 
     private void initView() {
         mData = (PlantBean.ResultBean.ResultsBean) getIntent().getSerializableExtra(Constant.ARG_PLANT);
@@ -83,19 +80,19 @@ public class PlantDetailActivity extends AppCompatActivity {
     }
 
     private void initBanner() {
-        if(!mData.getF_Pic01_URL().equals("")) {
+        if (!mData.getF_Pic01_URL().equals("")) {
             picList.add(mData.getF_Pic01_URL());
             picNumList.add(0);
         }
-        if(!mData.getF_Pic02_URL().equals("")) {
+        if (!mData.getF_Pic02_URL().equals("")) {
             picList.add(mData.getF_Pic02_URL());
             picNumList.add(1);
         }
-        if(!mData.getF_Pic03_URL().equals("")) {
+        if (!mData.getF_Pic03_URL().equals("")) {
             picList.add(mData.getF_Pic03_URL());
             picNumList.add(2);
         }
-        if(!mData.getF_Pic04_URL().equals("")) {
+        if (!mData.getF_Pic04_URL().equals("")) {
             picList.add(mData.getF_Pic04_URL());
             picNumList.add(3);
         }
@@ -108,7 +105,7 @@ public class PlantDetailActivity extends AppCompatActivity {
             }
         });
 
-        if(picList.size() < 2)
+        if (picList.size() < 2)
             banner.setCanLoop(false);
     }
 
@@ -125,12 +122,12 @@ public class PlantDetailActivity extends AppCompatActivity {
         @Override
         public void onBind(Context context, int position, Integer data) {
             Glide.with(context)
-                .applyDefaultRequestOptions(new RequestOptions()
-                .placeholder(R.drawable.plant)
-                .error(R.drawable.plant))
-                .load(picList.get(data))
-                .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
-                .into(iv_pic);
+                    .applyDefaultRequestOptions(new RequestOptions()
+                            .placeholder(R.drawable.plant)
+                            .error(R.drawable.plant))
+                    .load(picList.get(data))
+                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
+                    .into(iv_pic);
         }
     }
 
@@ -143,7 +140,7 @@ public class PlantDetailActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        if(picList.size() > 1)
+        if (picList.size() > 1)
             banner.start();
     }
 
@@ -159,7 +156,7 @@ public class PlantDetailActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
         Animatoo.animateCard(this);
     }

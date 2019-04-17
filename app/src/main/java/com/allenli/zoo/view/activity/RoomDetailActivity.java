@@ -3,7 +3,6 @@ package com.allenli.zoo.view.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,21 +34,20 @@ import androidx.viewpager.widget.ViewPager;
 
 
 public class RoomDetailActivity extends AppCompatActivity {
+    private ViewPager vp_detial_list;
+    private List<Fragment> fragmentList;
+    private ContentPagerAdapter adapter;
 
-    ViewPager vp_detial_list;
-    List<Fragment> fragmentList;
-    ContentPagerAdapter adapter;
+    private MainBean.ResultBean.ResultsBean mData;
 
-    MainBean.ResultBean.ResultsBean mData;
-
-    ImageView iv_pic;
-    TextView tv_name, tv_category, tv_memo, tv_info;
-    AppCompatButton btn_link, btn_share, btn_map;
-    TabLayout tabs;
-    String[] tabTitle = {"動物", "植物"};
-    int[] tabImg = {R.drawable.animal, R.drawable.plant};
-    Double latitude = 0.0;
-    Double longitude = 0.0;
+    private ImageView iv_pic;
+    private TextView tv_name, tv_category, tv_memo, tv_info;
+    private AppCompatButton btn_link, btn_share, btn_map;
+    private TabLayout tabs;
+    private String[] tabTitle = {"動物", "植物"};
+    private int[] tabImg = {R.drawable.animal, R.drawable.plant};
+    private Double latitude = 0.0;
+    private Double longitude = 0.0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,7 +56,6 @@ public class RoomDetailActivity extends AppCompatActivity {
 
         initView();
     }
-
 
     private void initView() {
         mData = (MainBean.ResultBean.ResultsBean) getIntent().getSerializableExtra(Constant.ARG_ROOM);
@@ -81,17 +78,10 @@ public class RoomDetailActivity extends AppCompatActivity {
         vp_detial_list = findViewById(R.id.vp_detial_list);
         vp_detial_list.setAdapter(adapter);
 
-        vp_detial_list.post(new Runnable() {
-            @Override
-            public void run() {
-                vp_detial_list.requestLayout();
-            }
-        });
-
         initTab();
     }
 
-    private void initData(){
+    private void initData() {
         iv_pic = findViewById(R.id.iv_pic);
         Glide.with(this).load(mData.getE_Pic_URL()).into(iv_pic);
 
@@ -108,7 +98,7 @@ public class RoomDetailActivity extends AppCompatActivity {
         tv_info.setText(mData.getE_Info());
 
         btn_link = findViewById(R.id.btn_link);
-        btn_link.setOnClickListener((View view) ->{
+        btn_link.setOnClickListener((View view) -> {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(mData.getE_URL()));
@@ -116,7 +106,7 @@ public class RoomDetailActivity extends AppCompatActivity {
         });
 
         btn_share = findViewById(R.id.btn_share);
-        btn_share.setOnClickListener((View view) ->{
+        btn_share.setOnClickListener((View view) -> {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_SEND);
             intent.setType("text/plain");
@@ -125,18 +115,18 @@ public class RoomDetailActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        try{
+        try {
             String location = mData.getE_Geo().substring(
-                    mData.getE_Geo().indexOf("((") + 2 , mData.getE_Geo().indexOf("))") - 2);
+                    mData.getE_Geo().indexOf("((") + 2, mData.getE_Geo().indexOf("))") - 2);
             String[] geoArray = location.split(" ");
             latitude = Double.parseDouble(geoArray[1]);
             longitude = Double.parseDouble(geoArray[0]);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
         btn_map = findViewById(R.id.btn_map);
-        btn_map.setOnClickListener((View view) ->{
+        btn_map.setOnClickListener((View view) -> {
             Uri uri = Uri.parse("geo:0,0?q=" + latitude + "," + longitude);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             intent.setPackage("com.google.android.apps.maps");
@@ -180,7 +170,7 @@ public class RoomDetailActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
         Animatoo.animateZoom(this);
     }
